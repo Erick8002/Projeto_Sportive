@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+header {
+  position: fixed;
+  width: 80vw;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr 600px;
+  gap: 10%;
+  align-items: center;
+  z-index: 2;
+}
+header img {
+  width: 100px;
+}
+header nav ul {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+}
+
+section {
+  background-image: radial-gradient(#470964, #791fd3);
+  height: 100vh;
+  position: relative;
+}
+section .lista {
+  width: 70vw;
+  height: 100%;
+  margin: auto;
+  position: relative;
+}
+section .lista .item {
+  position: absolute;
+  inset: 0;
+}
+section .lista .item .car-img {
+  position: absolute;
+  top: 50%;
+  transform: translate(10px, -50%);
+  width: 60%;
+}
+section .lista .item .car-img img {
+  width: 100%;
+  transform: rotate(-30deg);
+}
+section .lista .item .car-img::before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  height: 100px;
+  top: 150%;
+  left: 50px;
+  border: 50%;
+  filter: blur(60px);
+}
+section .lista .conteudo {
+  position: absolute;
+  right: 100px;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  gap: 50px;
+}
+section .lista .conteudo .car-cabecalho {
+  font-weight: bold;
+  color: #c2c1c1;
+}
+section .lista .conteudo h2 {
+  font-size: 8em;
+  line-height: 1em;
+  font-family: "League Gothic", sans-serif;
+}
+section .lista .conteudo .car-descricao {
+  color: #c2c0c0;
+  font-size: 12px;
+  text-align: right;
+  max-width: 400px;
+  font-family: "Poppins", sans-serif;
+}
+section .lista .conteudo .informacao {
+  border-radius: 30px;
+  height: 35px;
+  width: 120px;
+  text-transform: uppercase;
+  border: 2px solid #791fd3;
+  background-color: #beff1b;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+section .lista::before {
+  content: "";
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  top: 50%;
+  border-top: 1px solid #fff;
+}
+section .seta {
+  width: 70vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25px);
+  display: flex;
+  justify-content: space-between;
+}
+section .seta button:nth-child(1) img {
+  transform: scale(-1);
+}
+section .seta button {
+  top: 60%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+section .seta button img {
+  width: 30px;
+  margin-top: 4px;
+}
+section .seta button:hover {
+  background-color: #beff1b;
+}
+section .indicadores {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 200px;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 15px;
+}
+section .indicadores .numeros {
+  font-size: 5em;
+  font-family: "League Gothic", sans-serif;
+}
+section .indicadores ul {
+  display: flex;
+  gap: 10px;
+}
+section .indicadores ul li {
+  background-color: #c2c1c1;
+  width: 50px;
+  height: 5px;
+  border-radius: 0 5px 0 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transform: 0.5s;
+}
+section .indicadores ul .active {
+  background-color: #beff1b;
+}
+
+section .lista {
+  --calculation: 1;
+}
+section .lista .item {
+  transform: translateX(calc(100vw * var(--calculation)));
+  transition: 0.5s;
+  opacity: 0;
+}
+section .lista .item .car-img img {
+  transform: rotate(0);
+  transition: 0.5s;
+  transition-delay: 0.3s;
+}
+section .lista .item .conteudo .car-cabecalho, section .lista .item .conteudo h2, section .lista .item .conteudo .car-descricao, section .lista .item .conteudo .informacao {
+  transform: translateX(calc(200px * var(--calculation)));
+  transition: 0.7s;
+  transition-delay: 0.3s;
+  opacity: 0;
+}
+section .lista .item .conteudo h2 {
+  transition-delay: 0.5s;
+}
+section .lista .item .conteudo .car-descricao {
+  transition-delay: 0.7s;
+}
+section .lista .item .conteudo .informacao {
+  transition-delay: 0.9s;
+}
+section .lista .active {
+  transform: translateX(0);
+  transition: 0.5s;
+  opacity: 1;
+}
+section .lista .active .car-img img {
+  transform: rotate(-25deg);
+}
+section .lista .active .conteudo .car-cabecalho, section .lista .active .conteudo h2, section .lista .active .conteudo .car-descricao, section .lista .active .conteudo .informacao {
+  transform: translateX(0);
+  opacity: 1;
+}/*# sourceMappingURL=style.css.map */
